@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K Furniture Indonesia</title>
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #00AEEF;
+            --dark-blue: #2C3E50;
+            --text-dark: #333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 2%;
+            padding-right: 70px;
+            background: white;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            gap: 0px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo p {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #000;
+            border-bottom: 2px solid #1a2a3a;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 20px;
+        }
+
+        .product-title {
+            font-size: 3rem;
+            color: #31435a;
+            margin-bottom: 10px;
+        }
+
+        .line {
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+            margin-bottom: 35px;
+        }
+
+        .product-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .product-image {
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .product-image img {
+            border-radius: 16px;
+            transition: 0.4s;
+        }
+
+        .product-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .thumbnail-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .thumb {
+            width: 90px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .thumb:hover {
+            border-color: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #56667b;
+        }
+
+        .specs {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+        }
+
+        .specs h3 {
+            font-size: 1.1rem;
+            color: #31435a;
+        }
+
+        .specs p {
+            font-size: 1rem;
+            color: #56667b;
+        }
+
+        .color {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .color-circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #ab8953;
+        }
+
+        .clr {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #DCDCDC;
+        }
+
+        .rlc {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #D8CEC6;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #d9e4ec;
+            padding: 80px 10% 20px;
+            display: grid;
+            align-items: flex-start;
+            grid-template-columns: 3fr 1fr 2fr;
+            gap: 10px;
+        }
+
+        .footer-logo {
+            margin-bottom: 0%;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 32px;
+            margin-top: 12px;
+            color: #1a2a3a;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            grid-column: span 3;
+            text-align: center;
+            padding-top: 40px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* ================= ANIMATION ================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================= TABLET ================= */
+
+        @media (max-width: 900px) {
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                background: white;
+
+                flex-direction: column;
+                text-align: center;
+
+                padding: 30px 0;
+                transition: 0.3s;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .product-section {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .copyright {
+                grid-column: span 2;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            .product-title {
+                font-size: 2rem;
+            }
+
+            .specs {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnail-group {
+                justify-content: center;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .copyright {
+                grid-column: span 1;
+            }
+
+            .logo p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+            <svg width="35" height="35" viewBox="0 0 100 100">
+                <img src="Assets\K_FURNITURE__INDONESIA-removebg-preview.png" style="height: 50px; margin-right: 10px;"">
+            </svg>
+            <p style=" margin-bottom: 2%;">K FURNITURE INDONESIA</p>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="Custom Furniture.html">Custom</a></li>
+            <li><a href="Katalog Produk.html" class="active">Katalog</a></li>
+            <li><a href="Profil.html">Profil</a></li>
+            <li><a href="Tentang Kami.html">Tentang Kami</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container reveal" id="mainContent">
+
+        <h1 class="product-title">Set Meja Cafe Retro Kolonial</h1>
+
+        <div class="line"></div>
+
+        <section class="product-section">
+
+            <!-- LEFT -->
+
+            <div>
+
+                <div class="product-image">
+                    <img src="Assets/gambar 14.jpeg" alt="Chair">
+                </div>
+
+                <div class="thumbnail-group">
+
+                    <div class="thumb">
+                        <img src="Assets/gambar 14.jpeg">
+                    </div>
+
+                    <div class="thumb">
+                        <img src="Assets/gambar 14.jpeg">
+                    </div>
+
+                    <div class="thumb">
+                        <img src="Assets/gambar 14.jpeg">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div>
+
+                <p class="description">
+                    Set meja kursi ini mengusung perpaduan gaya retro dan kolonial yang elegan. Kursi memiliki desain
+                    sandaran melengkung yang ergonomis dengan aksen anyaman rotan yang memberikan kesan klasik namun
+                    tetap ringan. Meja dilengkapi dengan tiang tunggal beraksen bubut yang artistik dan permukaan
+                    marmer/granit, menciptakan tampilan mewah yang tahan lama.
+                </p>
+
+                <div class="specs">
+
+                    <h3>Jenis Produk</h3>
+                    <p>Set Kursi Cafe / Bistro Set</p>
+
+                    <h3>Bahan Meja</h3>
+                    <p>Kayu Jati Solid (Tiang & Bingkai) dan Top Table Marmer/Granit.</p>
+
+                    <h3>Bahan kursi</h3>
+                    <p>Kayu Jati Solid dengan kombinasi Anyaman Rotan Alami</p>
+
+                    <h3>Warna Kayu</h3>
+
+                    <div class="color">
+                        <div class="color-circle"></div>
+                        <p>Natural Teak</p>
+                    </div>
+
+                    <h3>Warna Top Table</h3>
+
+                    <div class="color">
+                        <div class="color-circle clr"></div>
+                        <p>Putih Corak</p>
+                    </div>
+
+                    <h3>Warna Rotan</h3>
+
+                    <div class="color">
+                        <div class="color-circle rlc"></div>
+                        <p>Warna Rotan Alami.</p>
+                    </div>
+
+                    <h3>Dimensi Meja</h3>
+                    <p>
+                        Panjang: 60 cm <br> Lebar: 60 cm <br> Tinggi: 75 cm
+                    </p>
+
+                    <h3>Dimensi Kursi</h3>
+                    <p>
+                        Panjang: 52 cm <br> Lebar: 50 cm <br> Tinggi: 78 cm
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+        <div class="footer-col">
+            <div class="logo footer-logo">
+                <svg width="0" height="0" viewBox="0 0 100 100">
+                    <img src="Assets\K_FURNITURE__INDONESIA-removebg-preview.png" style="height: 80px;">
+                </svg>
+                <p style="margin-bottom: 5%; font-size: larger;">K FURNITURE INDONESIA</p>
+            </div>
+            <p>Eksplorasi kemewahan dalam setiap detail melalui <br> furnitur
+                yang didesain khusus sesuai visi Anda.</p>
+        </div>
+        <div class="footer-col">
+            <h4 style="font-size: larger;">MENU</h4>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Custom</a></li>
+                <li><a href="#">Katalog</a></li>
+                <li><a href="#">Profil</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4 style="font-size: larger;">ALAMAT</h4>
+            <p><i class="material-icons" style="font-size: 1rem; vertical-align: middle;">location_on</i> Gerjen
+                Sari, Jalan Soekarno Hatta, RT.003/RW.004, Tahunan, Kec. Tahunan, Kabupaten Jepara, Jawa Tengah 59451
+            </p>
+            <h4 style="margin-bottom: auto;">Sosial Media</h4>
+            <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright (c) 2026 - K FURNITURE INDONESIA
+        </div>
+    </footer>
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script>
+
+        // HAMBURGER MENU
+
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        hamburger.addEventListener("click", () => {
+
+            navLinks.classList.toggle("active");
+
+            const icon = hamburger.querySelector("i");
+
+            icon.classList.toggle("fa-bars");
+            icon.classList.toggle("fa-times");
+
+        });
+
+        // REVEAL ANIMATION
+
+        window.addEventListener("DOMContentLoaded", () => {
+
+            const main = document.getElementById("mainContent");
+
+            setTimeout(() => {
+                main.classList.add("active");
+            }, 200);
+
+        });
+
+    </script>
+
+</body>
+
+</html>

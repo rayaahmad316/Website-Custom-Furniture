@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - K Furniture Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 15px 2%;
+            padding-right: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            gap: 0px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #000;
+            border-bottom: 2px solid #5d7c8d;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* --- PROFILE SECTION --- */
+        .profile-container {
+            margin-top: 100px;
+            padding: 60px 10%;
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .profile-left {
+            text-align: center;
+            flex: 1;
+        }
+
+        .profile-img-wrapper {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid #f0f0f0;
+        }
+
+        .profile-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-btns {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            border: none;
+            cursor: pointer;
+            background: #5d7c8d;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .profile-right {
+            flex: 2;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .info-item label {
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .info-item p {
+            font-size: 1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* --- ORDER TABLE SECTION --- */
+        .order-section {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+            border-top: 2px solid #eee;
+        }
+
+        .order-header h2 {
+            font-size: 2.5rem;
+            color: #1a2a3a;
+            margin-bottom: 5px;
+        }
+
+        .badge-important {
+            background: #d9e4ec;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1100px;
+            table-layout: fixed;
+        }
+
+        th {
+            background: #f4f7f9;
+            padding: 15px 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid #e5e5e5;
+            color: #1a2a3a;
+        }
+
+        td {
+            padding: 15px 12px;
+            vertical-align: middle;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #eee;
+            color: #444;
+            word-wrap: break-word;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Ukuran kolom lebih rapi */
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 120px;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 190px;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 220px;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 120px;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 80px;
+        }
+
+        th:nth-child(6),
+        td:nth-child(6) {
+            width: 130px;
+        }
+
+        th:nth-child(7),
+        td:nth-child(7) {
+            width: 120px;
+        }
+
+        th:nth-child(8),
+        td:nth-child(8) {
+            width: 110px;
+        }
+
+        th:nth-child(9),
+        td:nth-child(9) {
+            width: 120px;
+        }
+
+        /* Gambar produk */
+        .td-img img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Status */
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .status-konfirmasi {
+            background: #C7D9E5;
+            color: #000;
+        }
+
+        .status-proses {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-kirim {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        /* Tombol aksi */
+        .action-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            width: 90px;
+            padding: 8px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-edit {
+            background: #5d7c8d;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #48616f;
+        }
+
+        .btn-delete {
+            background: #1a2a3a;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #101b26;
+        }
+
+        /* Hover row */
+        tbody tr:hover {
+            background: #fafafa;
+            transition: 0.3s;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #d9e4ec;
+            padding: 80px 10% 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr 2fr;
+            gap: 10px;
+        }
+
+        .footer-logo {
+            margin-bottom: 0%;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 32px;
+            margin-top: 12px;
+            color: #1a2a3a;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .copyright {
+            grid-column: span 3;
+            text-align: center;
+            padding-top: 50px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <svg width="35" height="35" viewBox="0 0 100 100">
+                <img src="Assets\K_FURNITURE__INDONESIA-removebg-preview.png" style="height: 50px; margin-right: 10px;"">
+            </svg>
+            <p style=" margin-bottom: 2%;">K FURNITURE INDONESIA</p>
+        </div>
+        <ul class=" nav-links" id="navLinks">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="Custom Furniture.html">Custom</a></li>
+            <li><a href="Katalog Produk.html">Katalog</a></li>
+            <li><a href="Profil.html" class="active">Profil</a></li>
+            <li><a href="Tentang Kami.html">Tentang Kami</a></li>
+        </ul>
+        <button class="hamburger" onclick="toggleMenu()">
+            <i class="material-icons">menu</i>
+        </button>
+    </nav>
+
+    <section class="profile-container reveal">
+        <div class="profile-left">
+            <div class="profile-img-wrapper">
+                <img src="https://i.pinimg.com/736x/d9/7b/bb/d97bbb08017ac2309307f0822e63d082.jpg?auto=format&fit=crop&q=80&w=400"
+                    alt="Avatar">
+            </div>
+            <div class="profile-btns">
+                <button class="btn-sm">Edit Foto</button>
+                <button class="btn-sm">Edit Profil</button>
+            </div>
+        </div>
+        <div class="profile-right">
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Nama</label>
+                    <p>Achmad Luhur Rayya Al Irkhas</p>
+                </div>
+                <div class="info-item">
+                    <label>Username</label>
+                    <p>achmdlhrryyarkhas</p>
+                </div>
+                <div class="info-item">
+                    <label>Email</label>
+                    <p>achmdlhrryy@gmail.com</p>
+                </div>
+                <div class="info-item">
+                    <label>Telepon</label>
+                    <p>087655123087</p>
+                </div>
+                <div class="info-item">
+                    <label>Alamat</label>
+                    <p>Gerjen Sari, Jalan Soekarno Hatta, RT.003/RW.004, Tahunan, Kec. Tahunan, Kabupaten Jepara, Jawa
+                        Tengah 59451</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section reveal">
+        <div class="order-header">
+            <h2>Pesanan Anda!</h2>
+            <p class="badge-important"><b>PENTING</b> - Anda Harus Login Untuk Memesan Produk Custom</p>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Konsumen</th>
+                        <th>Alamat</th>
+                        <th>Deskripsi</th>
+                        <th>Warna</th>
+                        <th>Jumlah</th>
+                        <th>Gambar</th>
+                        <th>Harga</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>achmdlhrryyarkhas</td>
+                        <td>Jln. Arjuna No. 05 Kec. Tahunan, Kab. Jepara</td>
+                        <td>Tinggi Keseluruhan 80 Cm, Lebar 60 Cm...</td>
+                        <td>1. Hitam<br>2. Antique Oak</td>
+                        <td>2 Pcs</td>
+                        <td class="td-img"><img
+                                src="https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&q=80&w=200"
+                                alt="P1"></td>
+                        <td>Rp 1.200.000</td>
+                        <td><span class="status-badge status-konfirmasi">Konfirmasi</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <a href="Edit Pesanan.html" style="text-decoration: none;">
+                                    <button class="btn-edit">
+                                        <i class="material-icons" style="font-size:14px">edit</i> EDIT
+                                    </button>
+                                </a>
+                                <a href="Profil.html" style="text-decoration: none;"
+                                    onclick="return confirm('Yakin ingin menghapus?')">
+
+                                    <button type="button" class="btn-delete">
+                                        <i class="material-icons" style="font-size:14px">delete</i> HAPUS
+                                    </button>
+
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>dzkyhmdalzz</td>
+                        <td>Jln. Pemuda No.10 Kec. Condongcatur, Kab. Sleman</td>
+                        <td>Diameter Top Meja 50 Cm, Tinggi Meja 45 Cm...</td>
+                        <td>Natural Satin</td>
+                        <td>5 Pcs</td>
+                        <td class="td-img"><img
+                                src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=200"
+                                alt="P2"></td>
+                        <td>Rp 1.000.000</td>
+                        <td><span class="status-badge status-proses">Proses</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <a href="Edit Pesanan.html" style="text-decoration: none;">
+                                    <button class="btn-edit">
+                                        <i class="material-icons" style="font-size:14px">edit</i> EDIT
+                                    </button>
+                                </a>
+                                <a href="Profil.html" style="text-decoration: none;"
+                                    onclick="return confirm('Yakin ingin menghapus?')">
+
+                                    <button type="button" class="btn-delete">
+                                        <i class="material-icons" style="font-size:14px">delete</i> HAPUS
+                                    </button>
+
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-col">
+            <div class="logo footer-logo">
+                <svg width="0" height="0" viewBox="0 0 100 100">
+                    <img src="Assets\K_FURNITURE__INDONESIA-removebg-preview.png" style="height: 80px;">
+                </svg>
+                <p style="margin-bottom: 5%; font-size: larger;">K FURNITURE INDONESIA</p>
+            </div>
+            <p>Eksplorasi kemewahan dalam setiap detail melalui <br> furnitur
+                yang didesain khusus sesuai visi Anda.</p>
+        </div>
+        <div class="footer-col">
+            <h4 style="font-size: larger;">MENU</h4>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Custom</a></li>
+                <li><a href="#">Katalog</a></li>
+                <li><a href="#">Profil</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4 style="font-size: larger;">ALAMAT</h4>
+            <p><i class="material-icons" style="font-size: 1rem; vertical-align: middle;">location_on</i> Gerjen
+                Sari, Jalan Soekarno Hatta, RT.003/RW.004, Tahunan, Kec. Tahunan, Kabupaten Jepara, Jawa Tengah 59451
+            </p>
+            <h4 style="margin-bottom: auto;">Sosial Media</h4>
+            <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright (c) 2026 - K FURNITURE INDONESIA
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Scroll Reveal
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                let windowHeight = window.innerHeight;
+                let revealTop = reveals[i].getBoundingClientRect().top;
+                if (revealTop < windowHeight - 100) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal(); // Run on load
+    </script>
+</body>
+
+</html>
